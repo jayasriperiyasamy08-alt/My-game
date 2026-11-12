@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Number Guessing Game</title>
+<style>
+body {
+    background: #17172e;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+    padding-top: 80px;
+}
+
+.game {
+    background: #292950;
+    padding: 30px;
+    margin: auto;
+    width: 300px;
+    border-radius: 15px;
+}
+
+input {
+    padding: 10px;
+    width: 100px;
+}
+
+button {
+    padding: 10px 20px;
+    background: orange;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+
+<div class="game">
+<h1>🎮 Guess The Number</h1>
+<p>Guess a number between 1 and 10</p>
+
+<input type="number" id="guess">
+
+<br><br>
+
+<button onclick="check()">Check</button>
+
+<p id="result"></p>
+<p id="score">Attempts: 0</p>
+
+</div>
+
+<script>
+let answer = Math.floor(Math.random() * 10) + 1;
+let attempts = 0;
+
+function check() {
+    let number = Number(document.getElementById("guess").value);
+    attempts++;
+
+    if(number === answer) {
+        document.getElementById("result").innerHTML =
+        "🎉 Correct! You Win!";
+    }
+    else if(number > answer) {
+        document.getElementById("result").innerHTML =
+        "Too High! Try Again";
+    }
+    else {
+        document.getElementById("result").innerHTML =
+        "Too Low! Try Again";
+    }
+
+    document.getElementById("score").innerHTML =
+    "Attempts: " + attempts;
+}
+</script>
+
+</body>
+</html>
